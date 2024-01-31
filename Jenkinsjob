@@ -1,11 +1,16 @@
-properties([pipelineTriggers([pollSCM('* * * * *')])])
 pipeline {
     agent any
+
+    triggers {
+        pollSCM('* * * * *')
+    }
 
     stages {
         stage('Hello') {
             steps {
-                python HelloWorld.py
+                script {
+                    sh 'python HelloWorld.py'
+                }
             }
         }
     }
