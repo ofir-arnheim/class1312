@@ -1,0 +1,12 @@
+pipeline {
+properties([pipelineTriggers([pollSCM('* * * * *')])])
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                python HelloWorld.py
+            }
+        }
+    }
+}
